@@ -1,94 +1,42 @@
-// ✅ src/components/custom/SearchAndAdd.js
+// src/components/custom/SearchAndAdd.js
 import React, { useState } from 'react';
-import { View, FlatList, StyleSheet } from 'react-native';
-import { Text, TextInput, Button } from '../ui';  // ✅ use only ui components
+import { View, FlatList } from 'react-native';
+import { Text, TextInput, Button } from '../ui';
+import styles from '../../styles/styles';
 
 export default function SearchAndAdd() {
-  const [phrases, setPhrases] = useState([
-    { id: 1, phrase: 'SubhanAllah', count: 0 },
-    { id: 2, phrase: 'Alhamdulillah', count: 0 },
-    { id: 3, phrase: 'Allahu Akbar', count: 0 },
-  ]);
+  const [search, setSearch] = useState('');
+  const [addText, setAddText] = useState('');
+  const [results, setResults] = useState([]);
 
-  const [searchText, setSearchText] = useState('');
-  const [newPhrase, setNewPhrase] = useState('');
-
-  // ✅ Filter phrases by search text (case-insensitive)
-  const filteredPhrases = phrases.filter((item) =>
-    item.phrase.toLowerCase().includes(searchText.toLowerCase())
-  );
-
-  // ✅ Add new unique phrase with count: 0
-  const handleAdd = () => {
-    const trimmed = newPhrase.trim();
-    if (!trimmed) return;
-
-    const exists = phrases.some(
-      (item) => item.phrase.toLowerCase() === trimmed.toLowerCase()
-    );
-
-    if (exists) {
-      alert('Phrase already exists!');
-    } else {
-      const newItem = {
-        id: phrases.length + 1,
-        phrase: trimmed,
-        count: 0,
-      };
-      setPhrases([...phrases, newItem]); // ✅ immutable update
-      setNewPhrase('');
-    }
+  const showResult = () => {
+    const combined = [];
+    if (search) combined.push(`Search: ${search}`);
+    if (addText) combined.push(`Add: ${addText}`);
+    setResults(combined);
+    setAddText(''); // clear add input after showing
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>🔍 Search & Add Zikr</Text>
+    <View style={styles.card}>
+      {/* Heading */}
+      <Text style={styles.title}>Add and Search</Text>
 
-      {/* Search box */}
-      <TextInput
-        placeholder="Search Zikr..."
-        value={searchText}
-        onChangeText={setSearchText}
-        style={styles.input}
-      />
+      {/* Search Input */}
+      <TextInput placeholder="Search" value={search} onChangeText={setSearch} />
 
-      {/* Add box */}
-      <TextInput
-        placeholder="Add new Zikr..."
-        value={newPhrase}
-        onChangeText={setNewPhrase}
-        style={styles.input}
-      />
-      <Button title="Add Zikr" onPress={handleAdd} />
+      {/* Add Input */}
+      <TextInput placeholder="Add" value={addText} onChangeText={setAddText} />
+      
+      {/* Button */}
+      <Button title="Show Result" onPress={showResult} />
 
-      {/* List of filtered phrases */}
+      {/* Display Results */}
       <FlatList
-        data={filteredPhrases}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => (
-          <Text style={styles.listItem}>
-            {item.phrase} ({item.count})
-          </Text>
-        )}
+        data={results}
+        keyExtractor={(item, index) => index.toString()}
+        renderItem={({ item }) => <Text style={styles.tasbihText}>{item}</Text>}
       />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    padding: 16,
-  },
-  title: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginBottom: 10,
-  },
-  input: {
-    marginBottom: 8,
-  },
-  listItem: {
-    fontSize: 16,
-    marginVertical: 4,
-  },
-});

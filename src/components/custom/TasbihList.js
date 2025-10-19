@@ -1,58 +1,44 @@
-// ✅ src/components/custom/TasbihList.js
+// src/components/custom/TasbihList.js
 import React, { useState } from 'react';
-import { View, Text, Button } from '../ui';  // use barrel components
+import { View, FlatList } from 'react-native';
+import { Text, Button } from '../ui';
+import styles from '../../styles/styles';
 
 export default function TasbihList() {
   const [tasbihs, setTasbihs] = useState([
-    { id: 1, title: 'SubhanAllah', count: 0 },
-    { id: 2, title: 'Alhamdulillah', count: 0 },
-    { id: 3, title: 'Allahu Akbar', count: 0 },
+    { id: '1', name: 'SubhanAllah', count: 0 },
+    { id: '2', name: 'Alhamdulillah', count: 0 },
   ]);
 
-  // ✅ increment selected tasbih (immutable update)
-  const increment = (id) => {
+  const updateCount = (id, delta) => {
     setTasbihs(prev =>
       prev.map(item =>
-        item.id === id ? { ...item, count: item.count + 1 } : item
-      )
-    );
-  };
-
-  // ✅ decrement selected tasbih (immutable update)
-  const decrement = (id) => {
-    setTasbihs(prev =>
-      prev.map(item =>
-        item.id === id && item.count > 0 ? { ...item, count: item.count - 1 } : item
+        item.id === id ? { ...item, count: Math.max(0, item.count + delta) } : item
       )
     );
   };
 
   return (
-    <View style={{ padding: 20 }}>
-      {tasbihs.map((item) => (
-        <View
-          key={item.id}
-          style={{
-            marginBottom: 15,
-            backgroundColor: '#f5f5f5',
-            borderRadius: 10,
-            padding: 15,
-          }}
-        >
-          <Text style={{ fontSize: 18, fontWeight: 'bold', marginBottom: 8 }}>
-            {item.title}
-          </Text>
+    <View style={styles.card}>
+      {/* Heading */}
+      <Text style={styles.title}>Tasbih</Text>
 
-          <Text style={{ fontSize: 16, marginBottom: 10 }}>
-            Count: {item.count}
-          </Text>
-
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-            <Button title="➕ Increment" onPress={() => increment(item.id)} />
-            <Button title="➖ Decrement" onPress={() => decrement(item.id)} />
+      {/* List of Tasbihs */}
+      <FlatList
+        data={tasbihs}
+        keyExtractor={item => item.id}
+        renderItem={({ item }) => (
+          <View style={styles.row}>
+            <Text style={styles.tasbihText}>
+              {item.name}: {item.count}
+            </Text>
+            <View style={styles.buttonRow}>
+              <Button title="+" onPress={() => updateCount(item.id, 1)} />
+              <Button title="−" onPress={() => updateCount(item.id, -1)} />
+            </View>
           </View>
-        </View>
-      ))}
+        )}
+      />
     </View>
   );
 }

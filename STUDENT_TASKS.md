@@ -3,12 +3,12 @@
 ☐ Update `src/config/student.js` with your name and reg #.
 
 **A. Barrel Fix**
-☐ Inspect `src/components/ui/index.js` and repair the missing export.
-☐ Replace any direct imports of Text from RN with the UI layer (barrel).
+ ☐ Inspect src/components/ui/index.js and repair the missing export.
+ ☐ Replace any direct imports of Text from RN with the UI layer (barrel).
 
 **B. Teacher Message**
-☐ Create `src/components/custom/TeacherMessage.js` (uses only `ui/*` components).
-☐ Render `<TeacherMessage />` in `App.js` (below `<AboutMe />`).
+☐ Create src/components/custom/TeacherMessage.js (uses only ui/* components).
+☐ Render <TeacherMessage /> in App.js (below <AboutMe />).
 
 **C. Tasbih +/−**
 ☐ Add increment & decrement buttons in each `TasbihList` row using `ui/Button`.

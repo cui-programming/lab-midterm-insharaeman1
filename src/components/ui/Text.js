@@ -1,18 +1,4 @@
-// ✅ src/components/ui/Text.js
-/*import React from 'react';
-import { Text as RNText, StyleSheet } from 'react-native';
-
-export default function Text({ children, style, ...props }) {
-  return <RNText style={[styles.text, style]} {...props}>{children}</RNText>;
-}
-
-const styles = StyleSheet.create({
-  text: {
-    fontSize: 16,
-    color: '#222',
-  },
-});*/
-// ✅ src/components/ui/Text.js
+// src/components/ui/Text.js
 import React from 'react';
 import { Text as RNText, StyleSheet } from 'react-native';
 
@@ -21,9 +7,5 @@ export default function Text({ children, style, ...props }) {
 }
 
 const styles = StyleSheet.create({
-  text: {
-    fontSize: 16,
-    color: '#222',
-  },
+  text: { fontSize: 16, color: '#000' },
 });
-
