@@ -1,4 +1,4 @@
-import React from 'react';
+import { Text, TextInput, Button } from '../ui';
 import { View } from 'react-native';
 import { styles } from '../../styles/styles';
 
