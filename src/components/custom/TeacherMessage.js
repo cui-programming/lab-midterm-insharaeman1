@@ -1,31 +1,41 @@
-// src/components/custom/TeacherMessage.js
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { Text, Card } from 'ui'; // ✅ use only ui/* components
+import { Text } from '../ui';  // use only ui components
 
 export default function TeacherMessage() {
   return (
-    <Card style={styles.card}>
-      <Text style={styles.title}>Message from Teacher</Text>
+    <View style={styles.container}>
+      <Text style={styles.heading}> Teacher’s Message</Text>
       <Text style={styles.message}>
-        Please complete your assignments on time and attend all classes.
+        Dear students, remember — learning React Native is not just about writing code,
+        it’s about understanding how components work together to build interactive apps.
+        Keep practicing and stay curious!
       </Text>
-    </Card>
+      <Text style={styles.signature}>— Your Teacher</Text>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  card: {
-    padding: 15,
-    marginVertical: 10,
-    borderRadius: 10,
+  container: {
+    margin: 16,
+    padding: 16,
+    borderRadius: 12,
+    backgroundColor: '#f0f8ff',
   },
-  title: {
+  heading: {
+    fontSize: 18,
     fontWeight: 'bold',
-    fontSize: 16,
-    marginBottom: 5,
+    marginBottom: 8,
   },
   message: {
+    fontSize: 15,
+    lineHeight: 22,
+    marginBottom: 8,
+  },
+  signature: {
+    textAlign: 'right',
+    fontStyle: 'italic',
     fontSize: 14,
   },
 });
