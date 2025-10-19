@@ -6,8 +6,8 @@ import { styles } from '../../styles/styles';
  * Custom/AboutMe
  * Shows name and registration number at the top.
  * Props: name (string), regNo (string)
- */
-export default function AboutMe({ name, regNo }) {
+ **/
+export default function AboutMe({ Inshara, sp23bse069 }) {
   return (
     <View style={styles.header}>
       <Text style={styles.headerText}>{name}</Text>

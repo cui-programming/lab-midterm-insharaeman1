@@ -1,36 +1,34 @@
 // src/components/custom/TeacherMessage.js
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { Text } from '../ui'; // ✅ Import from barrel
+import { Text, Button } from '../ui';  // ✅ use barrel exports
 
 export default function TeacherMessage() {
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>📢 Teacher’s Message</Text>
       <Text style={styles.message}>
-        Dear students, remember — learning React Native is not just about writing code,
-        it’s about building amazing mobile experiences! 🌟
+        Dear students, always remember — practice React Native every day to become confident!
       </Text>
+      <Button title="Got it 👍" onPress={() => alert('Keep learning!')} />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
-    backgroundColor: '#eef6ff',
+    padding: 16,
+    backgroundColor: '#f5f5f5',
     borderRadius: 10,
-    margin: 16,
+    margin: 10,
   },
   heading: {
     fontSize: 20,
-    fontWeight: '700',
-    marginBottom: 8,
-    color: '#004aad',
+    fontWeight: 'bold',
+    marginBottom: 6,
   },
   message: {
     fontSize: 16,
-    color: '#333',
+    marginBottom: 10,
   },
 });
-
