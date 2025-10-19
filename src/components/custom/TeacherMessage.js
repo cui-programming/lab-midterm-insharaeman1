@@ -1,41 +1,36 @@
+// src/components/custom/TeacherMessage.js
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { Text } from '../ui';  // use only ui components
+import { Text } from '../ui'; // ✅ Import from barrel
 
 export default function TeacherMessage() {
   return (
     <View style={styles.container}>
-      <Text style={styles.heading}> Teacher’s Message</Text>
+      <Text style={styles.heading}>📢 Teacher’s Message</Text>
       <Text style={styles.message}>
         Dear students, remember — learning React Native is not just about writing code,
-        it’s about understanding how components work together to build interactive apps.
-        Keep practicing and stay curious!
+        it’s about building amazing mobile experiences! 🌟
       </Text>
-      <Text style={styles.signature}>— Your Teacher</Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    padding: 20,
+    backgroundColor: '#eef6ff',
+    borderRadius: 10,
     margin: 16,
-    padding: 16,
-    borderRadius: 12,
-    backgroundColor: '#f0f8ff',
   },
   heading: {
-    fontSize: 18,
-    fontWeight: 'bold',
+    fontSize: 20,
+    fontWeight: '700',
     marginBottom: 8,
+    color: '#004aad',
   },
   message: {
-    fontSize: 15,
-    lineHeight: 22,
-    marginBottom: 8,
-  },
-  signature: {
-    textAlign: 'right',
-    fontStyle: 'italic',
-    fontSize: 14,
+    fontSize: 16,
+    color: '#333',
   },
 });
+
