@@ -1,4 +1,5 @@
 //  src/components/ui/index.js
+import { Text, TextInput, Button } from '../ui';
 import { Text as RNText, TextInput as RNTextInput, Button as RNButton } from 'react-native';
 import React from 'react';
 
