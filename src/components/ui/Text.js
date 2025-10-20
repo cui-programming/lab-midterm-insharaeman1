@@ -1,4 +1,3 @@
-// src/components/ui/Text.js
 import React from 'react';
 import { Text as RNText, StyleSheet } from 'react-native';
 

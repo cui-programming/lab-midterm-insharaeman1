@@ -1,4 +1,3 @@
-// src/components/custom/TasbihList.js
 import React, { useState } from 'react';
 import { View, FlatList } from 'react-native';
 import { Text, Button } from '../ui';
@@ -8,6 +7,7 @@ export default function TasbihList() {
   const [tasbihs, setTasbihs] = useState([
     { id: '1', name: 'SubhanAllah', count: 0 },
     { id: '2', name: 'Alhamdulillah', count: 0 },
+    { id: '3', name: 'Allahu Akbar', count: 0 },
   ]);
 
   const updateCount = (id, delta) => {
@@ -20,10 +20,10 @@ export default function TasbihList() {
 
   return (
     <View style={styles.card}>
-      {/* Heading */}
+      
       <Text style={styles.title}>Tasbih</Text>
 
-      {/* List of Tasbihs */}
+      
       <FlatList
         data={tasbihs}
         keyExtractor={item => item.id}

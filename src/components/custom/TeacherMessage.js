@@ -11,11 +11,15 @@ export default function TeacherMessage() {
         Complete your assignments on time and practice consistently.
       </Text>
 
-      {/* Smaller Button */}
+     
       <Button
         title="Got it!"
         onPress={() => alert('Acknowledged!')}
-        style={{ padding: 5, minWidth: 20, borderRadius: 4 }} // <-- smaller
+        style={{
+           paddingVertical: 5,
+           paddingHorizontal: 5,
+           minWidth: 5,
+            borderRadius: 4 }} 
       />
     </View>
   );

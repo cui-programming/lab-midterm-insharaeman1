@@ -1,41 +1,68 @@
-// src/components/custom/SearchAndAdd.js
 import React, { useState } from 'react';
-import { View, FlatList } from 'react-native';
-import { Text, TextInput, Button } from '../ui';
+import { View, FlatList, Text as RNText } from 'react-native';
+import { TextInput, Button } from '../ui'; 
 import styles from '../../styles/styles';
 
 export default function SearchAndAdd() {
+  const [phrases, setPhrases] = useState([
+    { phrase: 'Hello', count: 0 },
+    { phrase: 'React', count: 0 },
+    { phrase: 'Native', count: 0 },
+  ]);
+
   const [search, setSearch] = useState('');
   const [addText, setAddText] = useState('');
-  const [results, setResults] = useState([]);
 
-  const showResult = () => {
-    const combined = [];
-    if (search) combined.push(`Search: ${search}`);
-    if (addText) combined.push(`Add: ${addText}`);
-    setResults(combined);
-    setAddText(''); // clear add input after showing
+ 
+  const filteredPhrases = phrases.filter(item =>
+    item.phrase.toLowerCase().includes(search.toLowerCase())
+  );
+
+ 
+  const addPhrase = () => {
+    const trimmedText = addText.trim();
+    if (!trimmedText) return; 
+
+    const exists = phrases.some(
+      item => item.phrase.toLowerCase() === trimmedText.toLowerCase()
+    );
+
+    if (!exists) {
+      setPhrases([...phrases, { phrase: trimmedText, count: 0 }]);
+      setAddText(''); 
+    }
   };
 
   return (
     <View style={styles.card}>
-      {/* Heading */}
-      <Text style={styles.title}>Add and Search</Text>
+     
+      <TextInput
+        placeholder="Search phrases..."
+        value={search}
+        onChangeText={setSearch}
+        style={{ marginBottom: 10 }}
+      />
 
-      {/* Search Input */}
-      <TextInput placeholder="Search" value={search} onChangeText={setSearch} />
-
-      {/* Add Input */}
-      <TextInput placeholder="Add" value={addText} onChangeText={setAddText} />
       
-      {/* Button */}
-      <Button title="Show Result" onPress={showResult} />
+      <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 10 }}>
+        <TextInput
+          placeholder="Add new phrase..."
+          value={addText}
+          onChangeText={setAddText}
+          style={{ flex: 1, marginRight: 10 }}
+        />
+        <Button title="Add" onPress={addPhrase} />
+      </View>
 
-      {/* Display Results */}
+      
       <FlatList
-        data={results}
+        data={filteredPhrases}
         keyExtractor={(item, index) => index.toString()}
-        renderItem={({ item }) => <Text style={styles.tasbihText}>{item}</Text>}
+        renderItem={({ item }) => (
+          <RNText style={{ paddingVertical: 5 }}>
+            {item.phrase} (Count: {item.count})
+          </RNText>
+        )}
       />
     </View>
   );

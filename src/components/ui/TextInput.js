@@ -1,4 +1,3 @@
-// src/components/ui/TextInput.js
 import React from 'react';
 import { TextInput as RNTextInput, StyleSheet } from 'react-native';
 

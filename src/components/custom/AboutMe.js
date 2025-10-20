@@ -1,7 +1,6 @@
-// src/components/custom/AboutMe.js
 import React from 'react';
 import { View } from 'react-native';
-import { Text, Button } from '../ui'; // Import from barrel
+import { Text, Button } from '../ui'; 
 import styles from '../../styles/styles';
 
 export default function AboutMe() {

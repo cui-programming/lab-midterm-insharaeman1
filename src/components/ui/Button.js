@@ -1,4 +1,4 @@
-// src/components/ui/Button.js
+
 import React from 'react';
 import { Pressable, Text, StyleSheet } from 'react-native';
 
@@ -12,11 +12,15 @@ export default function Button({ title, onPress, style }) {
 
 const styles = StyleSheet.create({
   button: {
-    padding: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 8, 
+    minWidth: 30, 
     backgroundColor: 'green',
     borderRadius: 5,
     alignItems: 'center',
     marginVertical: 5,
   },
-  text: { color: '#fff', fontSize: 16 },
+  text: { 
+    color: '#fff', 
+    fontSize: 16 },
 });
