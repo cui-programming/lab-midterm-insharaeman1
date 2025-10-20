@@ -5,9 +5,9 @@ import styles from '../../styles/styles';
 
 export default function SearchAndAdd() {
   const [phrases, setPhrases] = useState([
-    { phrase: 'Hello', count: 0 },
-    { phrase: 'React', count: 0 },
-    { phrase: 'Native', count: 0 },
+    { phrase: 'SubhanAllah', count: 0 },
+    { phrase: 'Alhamdulillah', count: 0 },
+    { phrase: 'Allahu Akbar', count: 0 },
   ]);
 
   const [search, setSearch] = useState('');
